@@ -1,0 +1,69 @@
+<html>
+
+<head>
+    <title>Timer</title>
+    <style>
+        #timerDisplay {
+  font-size: 2em;
+  font-family: sans-serif;
+  height: calc(2rem);
+  margin: auto;
+  padding: 10px;
+  color: white;
+  width: 100px;
+  text-align: center;
+}
+html
+{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body
+{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  text-align: center;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+    </style>
+    <script>
+        let timerInterval;
+  clearInterval(timerInterval); // Reset any existing timer
+  let startTime = Date.now();
+
+  timerInterval = setInterval(() => {
+    let elapsed = Date.now() - startTime;
+    let seconds = Math.floor(elapsed / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let displaySeconds = seconds % 60;
+
+    // Update display
+    document.getElementById("timerDisplay").textContent =
+      `${String(minutes).padStart(2, '0')}:${String(displaySeconds).padStart(2, '0')}`;
+
+    // Update color based on time
+    if (elapsed >= 120000) {
+      document.getElementById("body").style.backgroundColor = "red";
+    } else if (elapsed >= 90000) {
+      document.getElementById("body").style.backgroundColor = "yellow";
+    } else if (elapsed >= 60000) {
+      document.getElementById("body").style.backgroundColor = "green";
+    } else {
+      document.getElementById("body").style.backgroundColor = "black";
+    }
+  }, 1000);
+    </script>
+</head>
+
+<body id="body">
+    <!--<button onclick="startTimer()">Start</button>-->
+    <div id="timerDisplay">00:00</div>
+</body>
+
+</html>
