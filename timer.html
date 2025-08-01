@@ -50,8 +50,10 @@ body
     // Update color based on time
     if (elapsed >= 120000) {
       document.getElementById("body").style.backgroundColor = "red";
+      document.getElementById("timerDisplay").style.color = "white";
     } else if (elapsed >= 90000) {
       document.getElementById("body").style.backgroundColor = "yellow";
+      document.getElementById("timerDisplay").style.color = "black";
     } else if (elapsed >= 60000) {
       document.getElementById("body").style.backgroundColor = "green";
     } else {
